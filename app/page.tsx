@@ -58,10 +58,14 @@ export default function Home() {
                 <CardTitle>{step.title}</CardTitle>
                 <ul className="mt-4 space-y-2">
                   {step.items.map((item) => (
-                    <li key={item.name}>
+                    <li key={typeof item === "string" ? item : item.name}>
+                      {typeof item === "string" ? (
+                      <span className="text-slate-300">• {item}</span>
+                      ) : (
                       <Link href={item.href} className="text-slate-300 hover:text-white">
                         • {item.name}
                       </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
